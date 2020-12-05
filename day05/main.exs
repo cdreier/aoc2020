@@ -18,22 +18,16 @@ calc = fn i ->
   {row, _} =
     Enum.reduce(String.graphemes(rows), {0, 127}, fn s, acc ->
       case s do
-        "F" ->
-          lowerHalf.(acc)
-
-        "B" ->
-          upperHalf.(acc)
+        "F" -> lowerHalf.(acc)
+        "B" -> upperHalf.(acc)
       end
     end)
 
   {seat, _} =
     Enum.reduce(String.graphemes(seats), {0, 7}, fn s, acc ->
       case s do
-        "L" ->
-          lowerHalf.(acc)
-
-        "R" ->
-          upperHalf.(acc)
+        "L" -> lowerHalf.(acc)
+        "R" -> upperHalf.(acc)
       end
     end)
 
