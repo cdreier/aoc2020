@@ -63,7 +63,7 @@ func main() {
 	log.Println("part 1", result[len(result)-1])
 
 	for i, p := range result {
-		if p+2 == result[i+1] {
+		if p+2 == result[i+1] { // let it crash if nothing is found at the end of the list
 			log.Println("part 2", p+1)
 			return
 		}
