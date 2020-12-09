@@ -12,9 +12,8 @@ defmodule Day9 do
     # part 2
     [{res, _}] = findWeakness(list, 2, part1result)
 
-    res = Enum.sort(res)
-    res = List.last(res) + List.first(res)
-    IO.puts("part 2 #{res}")
+    res = Enum.min(res) + Enum.max(res)
+    IO.puts("part 2: #{res}")
   end
 
   def preambles(list, size) do
@@ -22,10 +21,8 @@ defmodule Day9 do
   end
 
   def findWeakness(list, preambleSize, target) do
-    preambles = preambles(list, preambleSize)
-
     check =
-      preambles
+      preambles(list, preambleSize)
       |> Stream.map(fn preamble ->
         {preamble, Enum.reduce(preamble, fn i, acc -> acc + i end)}
       end)
@@ -44,8 +41,7 @@ defmodule Day9 do
 
     Stream.with_index(list)
     |> Stream.drop(preambleSize)
-    |> Stream.drop_while(fn i ->
-      {val, index} = i
+    |> Stream.drop_while(fn {val, index} ->
       checkSum(Enum.at(preambles, index - preambleSize), val)
     end)
     |> Enum.take(1)
