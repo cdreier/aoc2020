@@ -18,11 +18,7 @@ list =
   |> Stream.map(fn i ->
     answerCount = expectedAnswers.(i)
 
-    debug =
-      Enum.filter(i, fn j ->
-        {_, c} = j
-        c == answerCount
-      end)
+    debug = Enum.filter(i, fn {_, c} -> c == answerCount end)
 
     debug
   end)
