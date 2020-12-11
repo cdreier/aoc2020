@@ -28,8 +28,6 @@ defmodule Day10 do
       |> Stream.map(fn [a, b] -> b - a end)
       |> Enum.reduce({[], 1}, &countSeq/2)
 
-    # IO.inspect(sequences)
-
     aaa =
       sequences
       |> Stream.map(fn i ->
@@ -41,7 +39,6 @@ defmodule Day10 do
   end
 
   def permutationCount(1), do: 1
-
   def permutationCount(i), do: permutationCount(i - 1) + i - 2
 
   def countSeq(1, {cache, seq}), do: {cache, seq + 1}
